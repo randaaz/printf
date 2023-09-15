@@ -11,11 +11,11 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int j = 0;
+	int j = 0, i;
 
 	va_start(args, format);
 
-	for (int i = 0; format && format[i]; i++)
+	for (i = 0; format && format[i]; i++)
 	{
 		if (format[i] != '%')
 		{

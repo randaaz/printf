@@ -57,6 +57,10 @@ int _format_specifier(char specifier, va_list args)
 		{'%', print_percent},
 		{'d', print_intger},
 		{'i', print_intger},
+		{'u', _unsigned},
+		{'o', _octal},
+		{'x', _hex_lower},
+		{'X', _hex_upper},
 		{0, 0}
 	};
 
