@@ -19,6 +19,9 @@ typedef struct rr
 	void (*ss)(char *, va_list);
 } rr_s;
 
+int _putchar(char c);
+void print_many_characters(const char *ptr);
+
 
 
 #endif
