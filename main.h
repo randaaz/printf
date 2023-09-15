@@ -9,19 +9,24 @@
 
 /**
  * struct rr - holding format specifiers and functions
- * @rr: format specifier
- * @ss: pointer
+ * @rr: format specifier (char)
+ * @ss: pointer to a function taking va_list as argument
  */
 
 typedef struct rr
 {
-	char *rr;
-	void (*ss)(char *, va_list);
+	char rr;
+	void (*ss)(va_list);
 } rr_s;
 
 int _putchar(char c);
+int _printf(const char *format, ...);
 void print_many_characters(const char *ptr);
+void print_character(va_list args);
+void print_string(va_list args);
+void print_percent(va_list args);
+void print_intger(va_list args);
 
-
+int _format_specifier(char specifier, va_list args);
 
 #endif
