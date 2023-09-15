@@ -30,7 +30,7 @@ void _unsigned(va_list args);
 void _octal(va_list args);
 void _hex_lower(va_list args);
 void _hex_upper(va_list args);
-
+void converted_to_binary(va_list args);
 int _format_specifier(char specifier, va_list args);
 
 #endif
