@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_intge - print intger numbers
+ * print_intger - print intger numbers
  * @args: The va_list containing the character to print
  */
 
