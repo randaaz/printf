@@ -61,6 +61,7 @@ int _format_specifier(char specifier, va_list args)
 		{'o', _octal},
 		{'x', _hex_lower},
 		{'X', _hex_upper},
+		{'b', converted_to_binary},
 		{0, 0}
 	};
 
