@@ -26,6 +26,10 @@ void print_character(va_list args);
 void print_string(va_list args);
 void print_percent(va_list args);
 void print_intger(va_list args);
+void _unsigned(va_list args);
+void _octal(va_list args);
+void _hex_lower(va_list args);
+void _hex_upper(va_list args);
 
 int _format_specifier(char specifier, va_list args);
 
