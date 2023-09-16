@@ -10,29 +10,40 @@
 
 int _printf(const char *format, ...)
 {
-	int j = 0, i;
-	va_list args;
+    int characters_printed = 0;
+    va_list args;
 
-	va_start(args, format);
+    va_start(args, format);
 
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-	for (i = 0; format && format[i]; i++)
-	{
-		if (format[i] != '%')
-		{
-			_putchar(format[i]);
-			j++;
-		}
-		else if (format[i + 1])
-		{
-			i++;
-			j += _format_specifier(format[i], args);
-		}
-	}
+    if (!format)
+        return (-1);
 
-	va_end(args);
-	return (j);
+    while (*format)
+    {
+        if (*format != '%')
+        {
+            _putchar(*format);
+            characters_printed++;
+        }
+        else
+        {
+            format++;
+            if (*format)
+            {
+                int specifier_chars_printed = _format_specifier(*format, args);
+                if (specifier_chars_printed < 0)
+                    return (-1);
+                characters_printed += specifier_chars_printed;
+            }
+            else
+            {
+                va_end(args);
+                return (-1);
+            }
+        }
+        format++;
+    }
+
+    va_end(args);
+    return (characters_printed);
 }
