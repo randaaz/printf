@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _printf - Custom printf function.
+ * _print - Custom printf function.
  * @format: The format string.
  * @...: Variable arguments.
  *
@@ -10,11 +10,15 @@
 
 int _printf(const char *format, ...)
 {
-	va_list args;
 	int j = 0, i;
+	va_list args;
 
 	va_start(args, format);
 
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
 	for (i = 0; format && format[i]; i++)
 	{
 		if (format[i] != '%')
