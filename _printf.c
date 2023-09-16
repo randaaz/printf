@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _print - Custom printf function.
+ * _printf - Custom printf function.
  * @format: The format string.
  * @...: Variable arguments.
  *
