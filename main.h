@@ -21,7 +21,6 @@ typedef struct rr
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-void print_many_characters(const char *ptr);
 void print_character(va_list args);
 void print_string(va_list args);
 void print_percent(va_list args);
