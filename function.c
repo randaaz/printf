@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_characte - Print a character
+ * print_character - Print a character
  * @args: The va_list containing the character to print
  */
 void print_character(va_list args)
