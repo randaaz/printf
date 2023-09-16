@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_character - Print a character
+ * print_characte - Print a character
  * @args: The va_list containing the character to print
  */
 void print_character(va_list args)
@@ -73,5 +73,7 @@ int _format_specifier(char specifier, va_list args)
 			return (1);
 		}
 	}
-	return (0);
+	_putchar('%');
+	_putchar(specifier);
+	return (2);
 }
