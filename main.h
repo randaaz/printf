@@ -7,8 +7,6 @@
 #include <stdlib.h>
 #include <limits.h>
 
-#define BUFFER_S 1024
-#define BUFFER_D -1
 
 /**
  * struct rr - holding format specifiers and functions
