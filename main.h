@@ -20,7 +20,7 @@
 
 
 /**
- * struct pp_p - holding format specifiers as bitfields
+ * struct pp - holding format specifiers as bitfields
  * @a: First specifier (unsigned int)
  * @b: Second specifier (unsigned int)
  * @c: Third specifier (unsigned int)
@@ -57,9 +57,10 @@ typedef struct rr
 	int  (*ss)(va_list, pp_p *);
 } rr_s;
 
-char *Convert_integers_to_a_string(long int numb, int foundation, int fls, pp_p *pp);
+char *Convert_integers_to_a_string(long int numb,
+		int foundation, int fls, pp_p *pp);
 int _isdigit(int n);
-int _len (char *ptr);
+int _len(char *ptr);
 int print_n(char *ptr, pp_p *pp);
 int print_n_r(char *ptr, pp_p *pp);
 int print_n_l(char *ptr, pp_p *pp);
