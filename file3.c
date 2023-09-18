@@ -72,31 +72,28 @@ int _printf_func(char *ptr, va_list args, pp_p *pp)
  *
  * Return: 1 if a flag is set, 0 otherwise.
  */
+
 int _flag(char *ptr, pp_p *pp)
 {
 	int j = 0;
-
-	if (*ptr == '+')
+	switch (*ptr)
 	{
-		j = pp->b = 1;
+		case '+':
+			j = pp->b = 1;
+			break;
+		case ' ':
+			j = pp->c = 1;
+			break;
+		case '#':
+			j = pp->d = 1;
+			break;
+		case '-':
+			j = pp->f = 1;
+			break;
+		case '0':
+			j = pp->e = 1;
+			break;
 	}
-	else if (*ptr == ' ')
-	{
-		j = pp->c = 1;
-	}
-	else if (*ptr == '#')
-	{
-		j = pp->d = 1;
-	}
-	else if (*ptr == '-')
-	{
-		j = pp->f = 1;
-	}
-	else if (*ptr == '0')
-	{
-		j = pp->e = 1;
-	}
-
 	return (j);
 }
 
