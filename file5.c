@@ -20,10 +20,8 @@ char *_width(char *ptr, pp_p *pp, va_list args)
 	}
 	else
 	{
-		for (; _isdigit(*ptr); ptr++)
-		{
-			width = width * 10 + (*ptr - '0');
-		}
+		while (_isdigit(*ptr))
+			width = width * 10 + (*ptr++ - '0');
 	}
 
 	pp->g = width;
