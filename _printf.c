@@ -12,12 +12,12 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int j = 0;
-	char *p, *begin;
+	char *p , *begin;
 	pp_p  pp = I_PP_P;
 
 	va_start(args, format);
 
-	if (!format || format[0] == '%' && !format[1])
+	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 		}
 		begin = p;
 		p++;
-		while (_flag(p, &pp))
+		while (_flag(p , &pp))
 		{
 			p++;
 		}
@@ -43,7 +43,7 @@ int _printf(const char *format, ...)
 			j += print_to_(begin, p,
 					pp.ii || pp.jj ? p - 1 : 0);
 		else
-			j +=  _printf_func(p, args, &pp);
+			j+=  _printf_func(p, args, &pp);
 	}
 	_putchar(BUFFER_D);
 	va_end(args);

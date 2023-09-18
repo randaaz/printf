@@ -42,7 +42,6 @@ typedef struct pp
 	unsigned int h;
 	unsigned int ii   : 1;
 	unsigned int jj   : 1;
-	int precision;
 } pp_p;
 
 /**
