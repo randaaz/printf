@@ -49,10 +49,9 @@ int print_character(va_list args, pp_p *pp)
 }
 
 /**
- * print_integer - Prints an integer with padding if required.
- *
- * @args: A va_list of arguments containing the integer to print.
- * @pp: A pointer to a structure containing print parameters.
+ * print_integer - Print an integer with optional padding.
+ * @args: A va_list containing the arguments to be formatted and printed.
+ * @pp: A pointer to a pp_p structure containing formatting options.
  *
  * Return: The number of characters printed.
  */
