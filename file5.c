@@ -73,35 +73,40 @@ int print_r(va_list args, pp_p *pp)
  */
 int print_R(va_list args, pp_p *pp)
 {
-	int charac_n = 0, i, j;
-	char array[] = "NOPQRSTUVWXYZABCDEFGHIJKLM  nopqrstuvwxyzabcdefghijklm";
-	char *ptr = va_arg(args, char *);
+    int i, j;
+    int charac_n = 0;
+    char array[] = "NOPQRSTUVWXYZABCDEFGHIJKLM  nopqrstuvwxyzabcdefghijklm";
+    char *ptr = va_arg(args, char *);
 
-	(void)pp;
+    (void)pp;
 
-	for (i = 0; ptr[i]; i++)
-	{
-		j = ptr[i];
-		if ((j >= 'A' && j <= 'Z') || (j >= 'a' && j <= 'z'))
-		{
-			if (j >= 'a' && j <= 'z')
-			{
-				j -= 'a';
-				charac_n += _putchar(array[j]);
-			}
-			else if (j >= 'A' && j <= 'Z')
-			{
-				j -= 'A';
-				charac_n += _putchar(array[j]);
-			}
-		}
-		else
-		{
-			charac_n += _putchar(ptr[i]);
-		}
-	}
-	return (charac_n);
+    i = 0;
+    j = 0;
+    while (ptr[i])
+    {
+        if ((ptr[i] >= 'A' && ptr[i] <= 'Z') || (ptr[i] >= 'a' && ptr[i] <= 'z'))
+        {
+            j = ptr[i]; // Assign ptr[i] to j without modification
+            if (j >= 'a' && j <= 'z')
+            {
+                j -= 'a';
+                charac_n += _putchar(array[j]);
+            }
+            else if (j >= 'A' && j <= 'Z')
+            {
+                j -= 'A';
+                charac_n += _putchar(array[j]);
+            }
+        }
+        else
+        {
+            charac_n += _putchar(ptr[i]);
+        }
+        i++;
+    }
+    return (charac_n);
 }
+
 
 /**
  * _unsigned - Convert an unsigned integer to a string representation.

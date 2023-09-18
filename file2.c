@@ -99,22 +99,13 @@ int print_to_(char *begin, char *end, char *unless)
 int print_bi(va_list args, pp_p *pp)
 {
 	unsigned int number = va_arg(args, unsigned int);
-	char *ptr = Convert_integers_to_a_string(number, 2,
-			CONVERTED_TO_BINARY_U, pp);
+	char *ptr = Convert_integers_to_a_string(number, 2, CONVERTED_TO_BINARY_U, pp);
 	int i = 0;
 
-	switch (pp->d)
+	if (pp->d && number)
 	{
-		case 1:
-			if (number)
-			{
-				*--ptr = '0';
-			}
-			break;
-		default:
-			break;
+		*--ptr = '0';
 	}
-
 	pp->a = 1;
 	return (i += print_n(ptr, pp));
 }
