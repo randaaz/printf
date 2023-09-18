@@ -16,7 +16,7 @@
 
 typedef struct rr
 {
-	char *rr;
+	char rr;
 	void (*ss)(va_list);
 } rr_s;
 
