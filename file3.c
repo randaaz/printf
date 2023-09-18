@@ -10,7 +10,7 @@
  */
 
 
-int (*_format_specifier(char *ptr))(va_list args, pp_p *pp)
+int (*_format_specifier(char *ptr))(va_list args, pp_p * pp)
 {
 	rr_s specifiers[] = {
 		{"c", print_character},
@@ -76,6 +76,7 @@ int _printf_func(char *ptr, va_list args, pp_p *pp)
 int _flag(char *ptr, pp_p *pp)
 {
 	int j = 0;
+
 	switch (*ptr)
 	{
 		case '+':
