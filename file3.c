@@ -10,7 +10,7 @@
  */
 
 
-int (*_format_specifier(char *ptr))(va_list args, pp_p * pp)
+int (*_format_specifier(char *ptr))(va_list args, pp_p *pp)
 {
 	rr_s specifiers[] = {
 		{"c", print_character},
