@@ -5,13 +5,12 @@
  * function based on a format specifier.
  *
  * @ptr: A pointer to a format specifier character.
- *
  * Return: A pointer to the corresponding
  * printing function, or NULL if not found.
  */
 
 
-int (*_format_specifier(char *ptr))(va_list args, pp_p *pp)
+int (*_format_specifier(char *ptr))(va_list args, pp_p * pp)
 {
 	rr_s specifiers[] = {
 		{"c", print_character},
