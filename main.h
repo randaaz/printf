@@ -7,15 +7,17 @@
 #include <stdlib.h>
 #include <limits.h>
 
-#define NULL_S "(null)"
 
 #define BUFFER_S 1024
 #define BUFFER_D -1
 
+#define NULL_S "(null)"
+
+#define I_PP_P {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+
 #define CONVERTED_TO_BINARY_L 1
 #define CONVERTED_TO_BINARY_U 2
 
-#define I_PP_P {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 /**
  * struct pp_p - holding format specifiers as bitfields
@@ -45,7 +47,7 @@ typedef struct pp
 } pp_p;
 
 /**
- * struct rr_s - holding format specifiers and functions
+ * struct rr - holding format specifiers and functions
  * @rr: format specifier (char)
  * @ss: pointer to a function taking va_list as argument
  */
