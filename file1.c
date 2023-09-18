@@ -31,20 +31,13 @@ char *Convert_integers_to_a_string(long int numb,
 	ptr = &buffer[49];
 	*ptr = '\0';
 
-	for (; number != 0; number /= foundation)
-	{
+	do {
 		*--ptr = r[number % foundation];
-	}
+		number /= foundation;
+	} while (number != 0);
 
-	switch (mark)
-	{
-		case '-':
-			*--ptr = mark;
-			break;
-		default:
-			break;
-	}
-
+	if (mark)
+		*--ptr = mark;
 	return (ptr);
 }
 
@@ -62,39 +55,23 @@ int print_n(char *ptr, pp_p *pp)
 	unsigned int j = _len(ptr);
 	int negeteve = (!pp->a && *ptr == '-');
 
-	switch (!pp->h && *ptr == '0' && !ptr[1])
+	if (!pp->h && *ptr == '0' && !ptr[1])
+		ptr = "";
+	if (negeteve)
 	{
-		case 1:
-			ptr = "";
-			break;
-	}
-	switch (negeteve)
-	{
-		case 1:
-			ptr++;
-			j--;
-			break;
+		ptr++;
+		j--;
 	}
 	if (pp->h != UINT_MAX)
-	{
 		while (j++ < pp->h)
-		{
 			*--ptr = '0';
-		}
-	}
-	switch (negeteve)
-	{
-		case 1:
-			*--ptr = '-';
-			break;
-	}
-	switch (!pp->f)
-	{
-		case 1:
-			return (print_n_r(ptr, pp));
-		default:
-			return (print_n_l(ptr, pp));
-	}
+	if (negeteve)
+		*--ptr = '-';
+
+	if (!pp->f)
+		return (print_n_r(ptr, pp));
+	else
+		return (print_n_l(ptr, pp));
 }
 
 
@@ -106,7 +83,6 @@ int print_n(char *ptr, pp_p *pp)
  *
  * Return: The number of characters printed.
  */
-
 int print_n_r(char *ptr, pp_p *pp)
 {
 	unsigned int jj = 0, negeteve, negeteve1, j = _len(ptr);
@@ -128,10 +104,8 @@ int print_n_r(char *ptr, pp_p *pp)
 	else if (!pp->b && pp->c && !negeteve1 &&
 			!pp->a && pp->e)
 		jj += _putchar(' ');
-
-	for (; j++ < pp->g; )
+	while (j++ < pp->g)
 		jj += _putchar(x);
-
 	if (negeteve && x == ' ')
 		jj += _putchar('-');
 	if (pp->b && !negeteve1 && x == ' ' && !pp->a)
@@ -139,10 +113,10 @@ int print_n_r(char *ptr, pp_p *pp)
 	else if (!pp->b && pp->c && !negeteve1 &&
 			!pp->a && !pp->e)
 		jj += _putchar(' ');
-
 	jj += print_many_characters(ptr);
 	return (jj);
 }
+
 
 /**
  * print_n_l - Print a formatted string to the standard output (left-aligned).
@@ -165,23 +139,13 @@ int print_n_l(char *ptr, pp_p *pp)
 		ptr++;
 	else
 		negeteve = 0;
-
 	if (pp->b && !negeteve1 && !pp->a)
-	{
-		jj += _putchar('+');
-		j++;
-	}
+		jj += _putchar('+'), j++;
 	else if (pp->c && !negeteve1 && !pp->a)
-	{
-		jj += _putchar(' ');
-		j++;
-	}
-
+		jj += _putchar(' '), j++;
 	jj += print_many_characters(ptr);
-
-	for (; j++ < pp->g; )
+	while (j++ < pp->g)
 		jj += _putchar(x);
-
 	return (jj);
 }
 
