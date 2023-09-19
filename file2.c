@@ -76,14 +76,12 @@ int print_to_(char *begin, char *end, char *unless)
 {
 	int add = 0;
 
-	for (; begin <= end; begin++)
+	while (begin <= end)
 	{
 		if (begin != unless)
-		{
 			add += _putchar(*begin);
-		}
+		begin++;
 	}
-
 	return (add);
 }
 
