@@ -114,10 +114,13 @@ int _flag(char *ptr, pp_p *pp)
 char *_precision(char *p, pp_p *pp, va_list args)
 {
 	int width = 0;
+	int zeroFlag = 0;
 
 	if (*p != '.')
 		return (p);
+
 	p++;
+
 	if (*p == '*')
 	{
 		width = va_arg(args, int);
@@ -125,10 +128,19 @@ char *_precision(char *p, pp_p *pp, va_list args)
 	}
 	else
 	{
+		if (*p == '0')
+		{
+			zeroFlag = 1;
+			p++;
+		}
+
 		while (_isdigit(*p))
 			width = width * 10 + (*p++ - '0');
 	}
+
 	pp->ii = width;
+	pp->e = zeroFlag;
+
 	return (p);
 }
 
