@@ -46,7 +46,7 @@ char *Convert_integers_to_a_string(long int numb,
 /**
  * print_n - Format a string with specified width and flags.
  * @ptr: The string to format.
- * @pp: Pointer to a pp_p structure.
+ * @pp: Pointer to a pp_p structure
  *
  * Return: The number of characters printed.
  */
