@@ -31,13 +31,20 @@ char *Convert_integers_to_a_string(long int numb,
 	ptr = &buffer[49];
 	*ptr = '\0';
 
-	do {
+	for (; number != 0; number /= foundation)
+	{
 		*--ptr = r[number % foundation];
-		number /= foundation;
-	} while (number != 0);
+	}
 
-	if (mark)
-		*--ptr = mark;
+	switch (mark)
+	{
+		case '-':
+			*--ptr = mark;
+			break;
+		default:
+			break;
+	}
+
 	return (ptr);
 }
 
