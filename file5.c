@@ -69,33 +69,35 @@ int print_r(va_list args, pp_p *pp)
  *
  * Return: The number of characters printed.
  */
+
 int print_R(va_list args, pp_p *pp)
 {
-	int i, j;
+	int i;
 	int charac_n = 0;
-	char array[] = "NOPQRSTUVWXYZABCDEFGHIJKLM  nopqrstuvwxyzabcdefghijklm";
+	char array[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	char *ptr = va_arg(args, char *);
 
 	(void)pp;
 
 	i = 0;
-	j = 0;
 	while (ptr[i])
 	{
-		if ((ptr[i] >= 'A' && ptr[i] <= 'Z') || (ptr[i] >= 'a' && ptr[i] <= 'z'))
+		char c = ptr[i];
+
+		if (c >= 'A' && c <= 'Z')
 		{
-			j = ptr[i] - 65;
-			charac_n += _putchar(array[j]);
+			c = array[c - 'A'];
 		}
-		else
+		else if (c >= 'a' && c <= 'z')
 		{
-			charac_n += _putchar(ptr[i]);
+			c = array[c - 'a' + 26];
 		}
+
+		charac_n += _putchar(c);
 		i++;
 	}
 	return (charac_n);
 }
-
 
 /**
  * _unsigned - Convert an unsigned integer to a string representation.
