@@ -30,17 +30,16 @@ int (*_format_specifier(char *ptr))(va_list args, pp_p * pp)
 		{NULL, NULL}
 	};
 
-	int i = 0;
+	int i;
 
-	while (specifiers[i].rr)
+	for (i = 0; specifiers[i].rr; i++)
 	{
 		if (*ptr == specifiers[i].rr[0])
 		{
 			return (specifiers[i].ss);
 		}
-		i++;
-
 	}
+
 	return (NULL);
 }
 
