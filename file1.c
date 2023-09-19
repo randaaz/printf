@@ -4,7 +4,7 @@
  * Convert_integers_to_a_string - Convert a
  * long integer to a string representation in a specified base.
  * @numb: The long integer to convert
- * @foundation: The base to convert the integer to.
+ * @foundation: The base to convert the integer to
  * @fls: Flags for formatting (e.g., lowercase hexadecimal).
  * @pp: Pointer to a struct (not used in this function).
  *
