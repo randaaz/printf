@@ -76,15 +76,16 @@ int print_to_(char *begin, char *end, char *unless)
 {
 	int add = 0;
 
-	while (begin <= end)
+	for (; begin <= end; begin++)
 	{
 		if (begin != unless)
+		{
 			add += _putchar(*begin);
-		begin++;
+		}
 	}
+
 	return (add);
 }
-
 
 /**
  * print_bi - Print a formatted binary number to the standard output.
