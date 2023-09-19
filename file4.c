@@ -3,7 +3,7 @@
 /**
  * _modifier - Modifies print parameters based on a format modifier
  *
- * @s: A pointer to a format modifier string.
+ * @s: A pointer to a format modifier string
  * @pp: A pointer to a structure containing print parameters to modify.
  *
  * Return: 1 if a modification is made, 0 otherwise.
