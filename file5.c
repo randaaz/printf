@@ -84,17 +84,8 @@ int print_R(va_list args, pp_p *pp)
 	{
 		if ((ptr[i] >= 'A' && ptr[i] <= 'Z') || (ptr[i] >= 'a' && ptr[i] <= 'z'))
 		{
-			j = ptr[i];
-			if (j >= 'a' && j <= 'z')
-			{
-				j -= 'a';
-				charac_n += _putchar(array[j]);
-			}
-			else if (j >= 'A' && j <= 'Z')
-			{
-				j -= 'A';
-				charac_n += _putchar(array[j]);
-			}
+			j = ptr[i] - 65;
+			charac_n += _putchar(array[j]);
 		}
 		else
 		{
