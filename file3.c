@@ -113,25 +113,33 @@ int _flag(char *ptr, pp_p *pp)
 char *_precision(char *p, pp_p *pp, va_list args)
 {
 	int width = 0;
+	int zeroFlag = 0;
 
 	if (*p != '.')
 		return (p);
 
 	p++;
 
-	switch (*p)
+	if (*p == '*')
 	{
-		case '*':
-			width = va_arg(args, int);
+		width = va_arg(args, int);
+		p++;
+	}
+	else
+	{
+		if (*p == '0')
+		{
+			zeroFlag = 1;
 			p++;
-			break;
-		default:
-			while (_isdigit(*p))
-				width = width * 10 + (*p++ - '0');
-			break;
+		}
+
+		while (_isdigit(*p))
+			width = width * 10 + (*p++ - '0');
 	}
 
 	pp->ii = width;
+	pp->e = zeroFlag;
+
 	return (p);
 }
 
