@@ -77,24 +77,27 @@ int _flag(char *ptr, pp_p *pp)
 {
 	int j = 0;
 
-	switch (*ptr)
+	if (*ptr == '+')
 	{
-		case '+':
-			j = pp->b = 1;
-			break;
-		case ' ':
-			j = pp->c = 1;
-			break;
-		case '#':
-			j = pp->d = 1;
-			break;
-		case '-':
-			j = pp->f = 1;
-			break;
-		case '0':
-			j = pp->e = 1;
-			break;
+		j = pp->b = 1;
 	}
+	else if (*ptr == ' ')
+	{
+		j = pp->c = 1;
+	}
+	else if (*ptr == '#')
+	{
+		j = pp->d = 1;
+	}
+	else if (*ptr == '-')
+	{
+		j = pp->f = 1;
+	}
+	else if (*ptr == '0')
+	{
+		j = pp->e = 1;
+	}
+
 	return (j);
 }
 
