@@ -56,23 +56,43 @@ int print_n(char *ptr, pp_p *pp)
 	unsigned int j = _len(ptr);
 	int negeteve = (!pp->a && *ptr == '-');
 
-	if (!pp->h && *ptr == '0' && !ptr[1])
-		ptr = "";
-	if (negeteve)
+	switch (!pp->h && *ptr == '0' && !ptr[1])
 	{
-		ptr++;
-		j--;
+		case 1:
+			ptr = "";
+			break;
 	}
-	if (pp->h != UINT_MAX)
-		while (j++ < pp->h)
-			*--ptr = '0';
-	if (negeteve)
-		*--ptr = '-';
 
-	if (!pp->f)
-		return (print_n_r(ptr, pp));
-	else
-		return (print_n_l(ptr, pp));
+	switch (negeteve)
+	{
+		case 1:
+			ptr++;
+			j--;
+			break;
+	}
+
+	if (pp->h != UINT_MAX)
+	{
+		while (j++ < pp->h)
+		{
+			*--ptr = '0';
+		}
+	}
+
+	switch (negeteve)
+	{
+		case 1:
+			*--ptr = '-';
+			break;
+	}
+
+	switch (!pp->f)
+	{
+		case 1:
+			return (print_n_r(ptr, pp));
+		default:
+			return (print_n_l(ptr, pp));
+	}
 }
 
 
@@ -105,8 +125,10 @@ int print_n_r(char *ptr, pp_p *pp)
 	else if (!pp->b && pp->c && !negeteve1 &&
 			!pp->a && pp->e)
 		jj += _putchar(' ');
-	while (j++ < pp->g)
+
+	for (; j++ < pp->g; )
 		jj += _putchar(x);
+
 	if (negeteve && x == ' ')
 		jj += _putchar('-');
 	if (pp->b && !negeteve1 && x == ' ' && !pp->a)
@@ -114,6 +136,7 @@ int print_n_r(char *ptr, pp_p *pp)
 	else if (!pp->b && pp->c && !negeteve1 &&
 			!pp->a && !pp->e)
 		jj += _putchar(' ');
+
 	jj += print_many_characters(ptr);
 	return (jj);
 }
@@ -140,13 +163,23 @@ int print_n_l(char *ptr, pp_p *pp)
 		ptr++;
 	else
 		negeteve = 0;
+
 	if (pp->b && !negeteve1 && !pp->a)
-		jj += _putchar('+'), j++;
+	{
+		jj += _putchar('+');
+		j++;
+	}
 	else if (pp->c && !negeteve1 && !pp->a)
-		jj += _putchar(' '), j++;
+	{
+		jj += _putchar(' ');
+		j++;
+	}
+
 	jj += print_many_characters(ptr);
-	while (j++ < pp->g)
+
+	for (; j++ < pp->g; )
 		jj += _putchar(x);
+
 	return (jj);
 }
 
