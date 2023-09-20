@@ -48,7 +48,7 @@ char *Convert_integers_to_a_string(long int numb,
  * @ptr: The string to format.
  * @pp: Pointer to a pp_p structure
  *
- * Return: The number of characters printed.
+ * Return: The number of characters printed
  */
 
 int print_n(char *ptr, pp_p *pp)
