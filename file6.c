@@ -22,27 +22,15 @@ int print_h(va_list args, pp_p *pp)
 	else
 		ll = (unsigned int) va_arg(args, unsigned int);
 
-	ptr = Convert_integers_to_a_string(ll, 16,
-			CONVERTED_TO_BINARY_U | CONVERTED_TO_BINARY_L, pp);
-
-	switch (pp->d && ll)
+	ptr = Convert_integers_to_a_string(ll, 16, CONVERTED_TO_BINARY_U |
+			CONVERTED_TO_BINARY_L, pp);
+	if (pp->d && ll)
 	{
-		case 1:
-			*--ptr = 'x';
-			*--ptr = '0';
-			break;
-		default:
-			break;
+		*--ptr = 'x';
+		*--ptr = '0';
 	}
-
 	pp->a = 1;
-
-	for (i = 0; ptr[i] != '\0'; i++)
-	{
-		_putchar(ptr[i]);
-	}
-
-	return (i);
+	return (i += print_n(ptr, pp));
 }
 
 /**
@@ -69,25 +57,13 @@ int print_H(va_list args, pp_p *pp)
 		ll = (unsigned int) va_arg(args, unsigned int);
 
 	ptr = Convert_integers_to_a_string(ll, 16, CONVERTED_TO_BINARY_U, pp);
-
-	switch (pp->d && ll)
+	if (pp->d && ll)
 	{
-		case 1:
-			*--ptr = 'X';
-			*--ptr = '0';
-			break;
-		default:
-			break;
+		*--ptr = 'X';
+		*--ptr = '0';
 	}
-
 	pp->a = 1;
-
-	for (i = 0; ptr[i] != '\0'; i++)
-	{
-		_putchar(ptr[i]);
-	}
-
-	return (i);
+	return (i += print_n(ptr, pp));
 }
 
 /**
@@ -112,24 +88,12 @@ int print_o(va_list args, pp_p *pp)
 		ll = (unsigned int) va_arg(args, unsigned int);
 
 	ptr = Convert_integers_to_a_string(ll, 8, CONVERTED_TO_BINARY_U, pp);
-
-	switch (pp->d && ll)
+	if (pp->d && ll)
 	{
-		case 1:
-			*--ptr = '0';
-			break;
-		default:
-			break;
+		*--ptr = '0';
 	}
-
 	pp->a = 1;
-
-	for (i = 0; ptr[i] != '\0'; i++)
-	{
-		_putchar(ptr[i]);
-	}
-
-	return (i);
+	return (i += print_n(ptr, pp));
 }
 
 /**
@@ -149,8 +113,7 @@ int print_S(va_list args, pp_p *pp)
 
 	if ((int)(!ptr))
 		return (print_many_characters(NULL_S));
-
-	while (*ptr)
+	for (; *ptr; ptr++)
 	{
 		if ((*ptr > 0 && *ptr < 32) || *ptr >= 127)
 		{
@@ -160,12 +123,11 @@ int print_S(va_list args, pp_p *pp)
 			if (!h[1])
 				add += _putchar('0');
 			add += print_many_characters(h);
-		} else
+		}
+		else
 		{
 			add += _putchar(*ptr);
 		}
-		ptr++;
 	}
-
 	return (add);
 }
