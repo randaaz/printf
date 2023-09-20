@@ -113,8 +113,7 @@ int print_S(va_list args, pp_p *pp)
 
 	if ((int)(!ptr))
 		return (print_many_characters(NULL_S));
-
-	while (*ptr)
+	for (; *ptr; ptr++)
 	{
 		if ((*ptr > 0 && *ptr < 32) || *ptr >= 127)
 		{
@@ -124,12 +123,11 @@ int print_S(va_list args, pp_p *pp)
 			if (!h[1])
 				add += _putchar('0');
 			add += print_many_characters(h);
-		} else
+		}
+		else
 		{
 			add += _putchar(*ptr);
 		}
-		ptr++;
 	}
-
 	return (add);
 }
